@@ -1,0 +1,20 @@
+{{- /*
+  Recover WordPress authorship for imported historical posts.
+
+  Data file: data/legacy-authors.json
+  Lookup: publication date -> exact title -> recovered WordPress author.
+
+  Native Micro.blog/team-author handling should precede this partial in the
+  final post template so native authorship can take priority for new posts.
+*/ -}}
+
+{{- $dateKey := .Date.Format "2006-01-02" -}}
+{{- $byDate := index site.Data.legacy_authors $dateKey -}}
+{{- with $byDate -}}
+  {{- $legacy := index . $.Title -}}
+  {{- with $legacy -}}
+    <p class="post-byline post-byline--legacy">
+      By <span class="post-author">{{ .author_name }}</span>
+    </p>
+  {{- end -}}
+{{- end -}}
