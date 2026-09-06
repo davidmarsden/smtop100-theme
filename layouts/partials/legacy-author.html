@@ -1,20 +1,29 @@
 {{- /*
   Recover WordPress authorship for imported historical posts.
 
-  Data file: data/legacy-authors.json
-  Hugo preserves the hyphenated filename as the data key, so use index rather
-  than dot notation. Lookup: publication date -> exact title -> recovered author.
+  data/legacy-authors.json contains the recovered WXR author metadata.
+  data/contributor-aliases.json provides optional public display-name overrides
+  keyed by the original WordPress author login.
+
+  Lookup: publication date -> exact title -> recovered author.
 */ -}}
 
 {{- $dateKey := .Date.Format "2006-01-02" -}}
 {{- $legacyAuthors := index site.Data "legacy-authors" -}}
+{{- $aliases := index site.Data "contributor-aliases" -}}
 {{- with $legacyAuthors -}}
   {{- $byDate := index . $dateKey -}}
   {{- with $byDate -}}
     {{- $legacy := index . $.Title -}}
     {{- with $legacy -}}
+      {{- $displayName := .author_name -}}
+      {{- with $aliases -}}
+        {{- with index . $legacy.author_login -}}
+          {{- $displayName = . -}}
+        {{- end -}}
+      {{- end -}}
       <p class="post-byline post-byline--legacy">
-        By <span class="post-author">{{ .author_name }}</span>
+        By <span class="post-author">{{ $displayName }}</span>
       </p>
     {{- end -}}
   {{- end -}}
