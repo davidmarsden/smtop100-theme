@@ -1,0 +1,10 @@
+name = "SM Top 100"
+license = "MIT"
+licenselink = "https://github.com/davidmarsden/smtop100-theme/blob/main/LICENSE"
+description = "Custom Micro.blog theme overrides for SM Top 100."
+homepage = "https://github.com/davidmarsden/smtop100-theme"
+min_version = "0.91.0"
+
+[author]
+  name = "David Marsden"
+  homepage = "https://smtop100.blog/"
