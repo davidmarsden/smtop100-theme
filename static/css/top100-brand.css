@@ -240,7 +240,7 @@ a:hover { color: var(--top100-emerald); }
   display: flex;
   flex-direction: column;
   gap: 9px;
-  min-height: 185px;
+  min-height: 205px;
   padding: 22px;
   border: 1px solid var(--top100-border);
   border-radius: 18px;
@@ -254,6 +254,25 @@ a:hover { color: var(--top100-emerald); }
   transform: translateY(-4px);
   border-color: rgba(16,185,129,.45);
   box-shadow: 0 18px 34px rgba(11,31,59,.1);
+}
+.top100-card-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 2px;
+  border-radius: 12px;
+  color: var(--top100-emerald);
+  background: rgba(16,185,129,.09);
+}
+.top100-card-icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .top100-card-kicker {
   color: var(--top100-emerald);
@@ -280,6 +299,86 @@ a:hover { color: var(--top100-emerald); }
   margin-top: 2px;
   color: var(--top100-navy);
   font-size: clamp(30px, 4vw, 44px);
+}
+
+.top100-story-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 30px;
+}
+.top100-story-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  padding: 22px;
+  border: 1px solid var(--top100-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(11,31,59,.045);
+}
+.top100-story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-bottom: 10px;
+}
+.top100-story-meta .post-date {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.top100-story-category {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #08755c;
+  background: rgba(16,185,129,.11);
+  font-size: 11px;
+  font-weight: 800;
+}
+.top100-story-title {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.08;
+}
+.top100-story-title a {
+  color: var(--top100-navy);
+  text-decoration: none;
+}
+.top100-story-title a:hover { color: var(--top100-emerald); }
+.top100-story-byline {
+  margin-bottom: 12px;
+  color: var(--top100-muted);
+  font-size: 13px;
+}
+.top100-story-byline .post-date-wrapper { display: none; }
+.top100-story-summary {
+  flex: 1;
+  color: var(--top100-slate);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.top100-story-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  color: var(--top100-emerald);
+  text-decoration: none;
+  font-weight: 800;
+}
+.top100-story-link:hover { color: #08755c; }
+.top100-story-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 34px;
 }
 
 .post-preview {
@@ -329,6 +428,11 @@ time { color: var(--top100-muted); }
   .top100-ecosystem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (max-width: 720px) {
+  .top100-story-grid { grid-template-columns: 1fr; }
+  .top100-story-card { min-height: auto; }
+}
+
 @media (max-width: 620px) {
   .site-header { padding: 24px 18px 16px; }
   .top100-tagline { letter-spacing: .16em; line-height: 1.5; }
@@ -345,8 +449,10 @@ time { color: var(--top100-muted); }
 @media (prefers-color-scheme: dark) {
   body { background: #071526; color: #E5E7EB; }
   .page-content .wrapper { color: #E5E7EB; }
-  .top100-ecosystem-card { background: #0D223A; border-color: rgba(203,213,225,.12); }
+  .top100-ecosystem-card,
+  .top100-story-card { background: #0D223A; border-color: rgba(203,213,225,.12); }
   .top100-ecosystem-card strong,
+  .top100-story-title a,
   .post-preview .post-title,
   .post-preview .post-title a,
   article h1,
@@ -354,9 +460,12 @@ time { color: var(--top100-muted); }
   .page-content h2,
   .page-content h3 { color: #F8FAFC; }
   .top100-ecosystem-card > span:last-child,
+  .top100-story-summary,
+  .top100-story-byline,
   .post-date,
   .post-date-wrapper,
   time { color: #AAB6C3; }
+  .top100-card-icon { background: rgba(16,185,129,.13); }
   .article-break,
   .top100-latest-heading { border-color: rgba(203,213,225,.14); }
   .page-content code { background: #122A44; color: #DCE5EF; }
