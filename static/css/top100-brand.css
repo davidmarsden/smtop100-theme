@@ -313,6 +313,15 @@ time { color: var(--top100-muted); }
   border-top-color: var(--top100-border);
 }
 
+/* Keep the hero headline light even though Sumo's generic page heading rules
+   appear later in the cascade on light-mode builds. */
+.top100-home-hero #top100-home-title {
+  color: var(--top100-white);
+}
+.top100-home-hero #top100-home-title span {
+  color: var(--top100-emerald);
+}
+
 @media (max-width: 920px) {
   .top100-home-hero { grid-template-columns: 1fr; }
   .top100-home-hero-mark { justify-content: flex-start; }
