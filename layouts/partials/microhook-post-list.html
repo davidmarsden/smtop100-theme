@@ -1,0 +1,39 @@
+<div class="posts h-feed top100-story-grid">
+  {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
+  {{ range .Paginator.Pages }}
+  <article class="top100-story-card h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
+    <div class="top100-story-meta">
+      <a href="{{ .Permalink }}" class="post-date u-url">
+        <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ partial "dateformat/long" . }}</time>
+      </a>
+      {{ with index .Params.categories 0 }}<span class="top100-story-category">{{ . }}</span>{{ end }}
+    </div>
+
+    {{ if .Title }}
+      <h3 class="top100-story-title p-name"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+    {{ end }}
+
+    {{ if templates.Exists "partials/microhook-post-list-byline.html" }}
+      <div class="top100-story-byline">{{ partial "microhook-post-list-byline.html" . }}</div>
+    {{ end }}
+
+    <div class="top100-story-summary p-summary">
+      {{ if .Params.custom_summary }}
+        {{ .Summary | plainify | truncate 220 }}
+      {{ else if in .RawContent "<!--more-->" }}
+        {{ $splitContents := split .RawContent "<!--more-->" }}
+        {{ index $splitContents 0 | markdownify | plainify | truncate 220 }}
+      {{ else }}
+        {{ .Summary | plainify | truncate 220 }}
+      {{ end }}
+    </div>
+
+    <a class="top100-story-link" href="{{ .Permalink }}">Read more <span aria-hidden="true">→</span></a>
+  </article>
+  {{ end }}
+</div>
+
+<div class="post-nav top100-story-pagination">
+  {{ if $paginator.HasPrev }}<span class="prev"><a class="button" href="{{ $paginator.Prev.URL }}">← {{ T "Newer" }}</a></span>{{ end }}
+  {{ if $paginator.HasNext }}<span class="next"><a class="button" href="{{ $paginator.Next.URL }}">{{ T "Older" }} →</a></span>{{ end }}
+</div>
