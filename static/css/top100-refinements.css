@@ -12,17 +12,13 @@
 }
 
 /* Give story cards a little more breathing room between title, byline and excerpt. */
-.top100-story-title {
-  margin-bottom: 10px;
-}
+.top100-story-title { margin-bottom: 10px; }
 .top100-story-byline {
   display: block;
   margin: 0 0 14px;
   line-height: 1.4;
 }
-.top100-story-summary {
-  margin-top: 0;
-}
+.top100-story-summary { margin-top: 0; }
 
 /* Make the archive CTA an intentional destination, not an afterthought. */
 .top100-story-pagination .button {
@@ -80,9 +76,7 @@
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-.page-content .page .post-content img {
-  border-radius: 16px;
-}
+.page-content .page .post-content img { border-radius: 16px; }
 
 /* Footer: make it part of the Top 100 shell rather than disappearing into Sumo. */
 .site-footer {
@@ -117,13 +111,9 @@
   gap: 8px 16px;
 }
 .top100-footer-links a,
-.site-footer .attribution a {
-  color: #CBD5E1;
-}
+.site-footer .attribution a { color: #CBD5E1; }
 .top100-footer-links a:hover,
-.site-footer .attribution a:hover {
-  color: var(--top100-emerald);
-}
+.site-footer .attribution a:hover { color: var(--top100-emerald); }
 .site-footer .attribution {
   margin: 0;
   padding-top: 14px;
@@ -133,14 +123,66 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  body,
+  .page-content .wrapper,
+  .page-content .page,
+  .page-content .page .post-content,
+  .page-content .page .post-content p,
+  .page-content .page .post-content li,
+  .page-content .page .post-content strong,
+  .page-content .page .post-content em {
+    color: #E6EDF5;
+  }
+
   .page-content .page {
     background: #0D223A;
-    border-color: rgba(203,213,225,.12);
+    border-color: rgba(203,213,225,.14);
     box-shadow: none;
   }
   .page-content .page > .post-title {
-    border-bottom-color: rgba(203,213,225,.14);
+    color: #F8FAFC;
+    border-bottom-color: rgba(203,213,225,.16);
   }
+  .page-content .page .post-content h1,
+  .page-content .page .post-content h2,
+  .page-content .page .post-content h3 { color: #F8FAFC; }
+  .page-content .page .post-content a {
+    color: #7DD3FC;
+    text-decoration-color: rgba(125,211,252,.55);
+  }
+  .page-content .page .post-content a:hover {
+    color: var(--top100-emerald);
+    text-decoration-color: var(--top100-emerald);
+  }
+  .page-content .page .post-content code {
+    color: #E2E8F0;
+    background: #17314D;
+  }
+
+  .top100-story-card {
+    background: #0D223A;
+    border-color: rgba(203,213,225,.14);
+  }
+  .top100-story-title a { color: #F8FAFC; }
+  .top100-story-byline,
+  .top100-story-summary,
+  .top100-story-meta .post-date { color: #C7D2E0; }
+  .top100-story-category {
+    color: #5EE6BD;
+    background: rgba(16,185,129,.15);
+  }
+  .top100-story-link { color: #34D399; }
+
+  .top100-ecosystem-card {
+    background: #0D223A;
+    border-color: rgba(203,213,225,.14);
+  }
+  .top100-ecosystem-card strong { color: #F8FAFC; }
+  .top100-ecosystem-card > span:last-child { color: #C7D2E0; }
+
+  .site-footer,
+  .site-footer .wrapper,
+  .top100-footer-links a { color: #C7D2E0; }
 }
 
 @media (max-width: 620px) {
@@ -184,33 +226,23 @@
     padding: 5px 9px;
     font-size: 11px;
     font-weight: 600;
-    opacity: .82;
+    opacity: .9;
   }
-  .top100-utility-nav .top100-write-link {
-    opacity: 1;
-  }
+  .top100-utility-nav .top100-write-link { opacity: 1; }
   .top100-ecosystem-nav::after,
   .top100-utility-nav::after {
     content: "";
     flex: 0 0 11px;
   }
 
-  .top100-story-card {
-    padding: 20px 18px;
-  }
-  .top100-story-title {
-    margin-bottom: 12px;
-  }
+  .top100-story-card { padding: 20px 18px; }
+  .top100-story-title { margin-bottom: 12px; }
   .top100-story-byline {
     margin-bottom: 16px;
     line-height: 1.45;
   }
-  .top100-story-summary {
-    line-height: 1.6;
-  }
-  .top100-story-link {
-    margin-top: 20px;
-  }
+  .top100-story-summary { line-height: 1.6; }
+  .top100-story-link { margin-top: 20px; }
 
   .page-content .page {
     margin: 24px 0 38px;
