@@ -20,6 +20,41 @@
 }
 .top100-story-summary { margin-top: 0; }
 
+/* Make post categories readable and visually consistent with the homepage chips. */
+.page-content ul.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  opacity: 1;
+  color: var(--top100-muted);
+}
+.page-content ul.post-tags::before {
+  margin-right: 2px;
+  color: var(--top100-muted);
+}
+.page-content ul.post-tags li {
+  margin: 0;
+}
+.page-content ul.post-tags a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 9px;
+  border: 0;
+  border-radius: 999px;
+  color: #08755c;
+  background: rgba(16,185,129,.11);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.page-content ul.post-tags a:hover {
+  color: #052b22;
+  background: var(--top100-emerald);
+}
+
 /* Make the archive CTA an intentional destination, not an afterthought. */
 .top100-story-pagination .button {
   display: inline-flex;
@@ -157,6 +192,19 @@
   .page-content .page .post-content code {
     color: #E2E8F0;
     background: #17314D;
+  }
+
+  .page-content ul.post-tags,
+  .page-content ul.post-tags::before {
+    color: #AAB6C3;
+  }
+  .page-content ul.post-tags a {
+    color: #5EE6BD;
+    background: rgba(16,185,129,.15);
+  }
+  .page-content ul.post-tags a:hover {
+    color: #052b22;
+    background: var(--top100-emerald);
   }
 
   .top100-story-card {
