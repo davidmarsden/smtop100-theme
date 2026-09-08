@@ -6,7 +6,9 @@
       <a href="{{ .Permalink }}" class="post-date u-url">
         <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ partial "dateformat/long" . }}</time>
       </a>
-      {{ with index .Params.categories 0 }}<span class="top100-story-category">{{ . }}</span>{{ end }}
+      {{ with .Params.categories }}
+        {{ with index . 0 }}<span class="top100-story-category">{{ . }}</span>{{ end }}
+      {{ end }}
     </div>
 
     {{ if .Title }}
