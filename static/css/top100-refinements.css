@@ -11,6 +11,19 @@
   box-shadow: 0 16px 34px rgba(11,31,59,.10);
 }
 
+/* Give story cards a little more breathing room between title, byline and excerpt. */
+.top100-story-title {
+  margin-bottom: 10px;
+}
+.top100-story-byline {
+  display: block;
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+.top100-story-summary {
+  margin-top: 0;
+}
+
 /* Make the archive CTA an intentional destination, not an afterthought. */
 .top100-story-pagination .button {
   display: inline-flex;
@@ -180,6 +193,23 @@
   .top100-utility-nav::after {
     content: "";
     flex: 0 0 11px;
+  }
+
+  .top100-story-card {
+    padding: 20px 18px;
+  }
+  .top100-story-title {
+    margin-bottom: 12px;
+  }
+  .top100-story-byline {
+    margin-bottom: 16px;
+    line-height: 1.45;
+  }
+  .top100-story-summary {
+    line-height: 1.6;
+  }
+  .top100-story-link {
+    margin-top: 20px;
   }
 
   .page-content .page {
