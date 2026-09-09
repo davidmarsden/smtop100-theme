@@ -107,7 +107,7 @@
 .page-content .page .post-content h1 { font-size: clamp(28px, 4vw, 40px); }
 .page-content .page .post-content h2 { font-size: clamp(24px, 3.2vw, 32px); }
 .page-content .page .post-content h3 { font-size: clamp(20px, 2.6vw, 26px); }
-.page-content .page .post-content a {
+.page-content .post-content a {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -181,11 +181,16 @@
   .page-content .page .post-content h1,
   .page-content .page .post-content h2,
   .page-content .page .post-content h3 { color: #F8FAFC; }
-  .page-content .page .post-content a {
+
+  /* Blog posts and static pages share post-content, so make all editorial links
+     readable against the dark Sumo background instead of only links inside .page. */
+  .page-content .post-content a,
+  .page-content article a {
     color: #7DD3FC;
     text-decoration-color: rgba(125,211,252,.55);
   }
-  .page-content .page .post-content a:hover {
+  .page-content .post-content a:hover,
+  .page-content article a:hover {
     color: var(--top100-emerald);
     text-decoration-color: var(--top100-emerald);
   }
