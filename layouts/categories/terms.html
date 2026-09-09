@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="top100-category-directory">
+  <header class="top100-category-directory__header">
+    <h1>Categories</h1>
+    <p>Browse the Top 100 archive by category.</p>
+  </header>
+
+  {{ $categories := .Site.Taxonomies.categories.Alphabetical }}
+  {{ if $categories }}
+    <div class="top100-category-grid">
+      {{ range $categories }}
+        <a class="top100-category-card" href="{{ .Page.RelPermalink }}">
+          <span class="top100-category-name">{{ .Page.Title }}</span>
+          <span class="top100-category-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+        </a>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="top100-category-empty">No categories are available yet.</p>
+  {{ end }}
+</section>
+{{ end }}
