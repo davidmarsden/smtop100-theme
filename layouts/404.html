@@ -21,15 +21,23 @@
   if (pageIndex !== -1) taxonomyParts = taxonomyParts.slice(0, pageIndex);
   if (!taxonomyParts.length) return;
 
+  function decodeSlug(value) {
+    try {
+      return decodeURIComponent(value);
+    } catch (error) {
+      return value;
+    }
+  }
+
   var target = null;
   var label = null;
 
   if (kind === 'category') {
-    var categorySlug = taxonomyParts[taxonomyParts.length - 1];
+    var categorySlug = decodeSlug(taxonomyParts[taxonomyParts.length - 1]);
     target = '/categories/' + encodeURIComponent(categorySlug) + '/';
     label = categorySlug.replace(/-/g, ' ');
   } else if (kind === 'tag') {
-    var tagSlug = taxonomyParts[0];
+    var tagSlug = decodeSlug(taxonomyParts[0]);
     var tagQuery = tagSlug.replace(/-/g, ' ');
     target = '/search/?q=' + encodeURIComponent(tagQuery);
     label = tagQuery;
