@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="page-content">
+  <div class="wrapper">
+    <article class="page legacy-404">
+      <h1 class="post-title">Page not found</h1>
+      <div class="post-content">
+        <p id="legacy-redirect-message">That address no longer exists on the new Top 100 site.</p>
+        <p><a href="/">Return to Top 100</a> or <a href="/search/">search the archive</a>.</p>
+      </div>
+    </article>
+  </div>
+</div>
+<script>
+(function () {
+  var parts = window.location.pathname.split('/').filter(Boolean);
+  if (!parts.length) return;
+
+  var kind = parts[0].toLowerCase();
+  var taxonomyParts = parts.slice(1);
+  var pageIndex = taxonomyParts.indexOf('page');
+  if (pageIndex !== -1) taxonomyParts = taxonomyParts.slice(0, pageIndex);
+  if (!taxonomyParts.length) return;
+
+  var target = null;
+  var label = null;
+
+  if (kind === 'category') {
+    var categorySlug = taxonomyParts[taxonomyParts.length - 1];
+    target = '/categories/' + encodeURIComponent(categorySlug) + '/';
+    label = categorySlug.replace(/-/g, ' ');
+  } else if (kind === 'tag') {
+    var tagSlug = taxonomyParts[0];
+    var tagQuery = tagSlug.replace(/-/g, ' ');
+    target = '/search/?q=' + encodeURIComponent(tagQuery);
+    label = tagQuery;
+  }
+
+  if (!target) return;
+
+  var message = document.getElementById('legacy-redirect-message');
+  if (message) {
+    message.textContent = 'Redirecting the old WordPress ' + kind + ' “' + label + '”…';
+  }
+
+  window.location.replace(target);
+})();
+</script>
+{{ end }}
