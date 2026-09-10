@@ -1,7 +1,59 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Top 100 Regen Archive — Top 100</title><meta name="description" content="Top 100 Regen news and launch history."><link rel="stylesheet" href="/css/top100-brand.css"><link rel="stylesheet" href="/css/regen-section.css"></head><body class="regen-section-page">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top 100 Regen Archive — Top 100</title>
+  <meta name="description" content="Top 100 Regen news and history.">
+  <link rel="stylesheet" href="/css/top100-brand.css">
+  <link rel="stylesheet" href="/css/regen-section.css">
+  <style>
+    .regen-archive-list{display:grid;gap:1rem;margin:1.5rem 0 2rem}.regen-archive-item{background:#fff;border:1px solid var(--regen-line);border-radius:14px;padding:1.1rem 1.2rem}.regen-archive-item h2{font-size:1.3rem;margin:0 0 .35rem}.regen-archive-item h2 a{text-decoration:none}.regen-archive-meta{margin:0;color:var(--regen-muted);font-size:.9rem}.regen-archive-summary{margin:.6rem 0 0;color:var(--regen-muted)}.regen-archive-status{padding:1rem;background:#fff;border:1px solid var(--regen-line);border-radius:12px;color:var(--regen-muted)}
+  </style>
+</head>
+<body class="regen-section-page">
 <header class="regen-shell-header"><div class="regen-shell-header__inner"><a class="regen-top100-link" href="/">Top <strong>100</strong></a><nav aria-label="Top 100 Regen"><a href="/regen/">Regen</a><a href="/regen/rules/">Rules</a><a class="is-current" href="/regen/archive/">Archive</a><a href="/regen/join/">Join</a><a href="/subscribe/">Subscribe</a></nav></div></header>
-<main class="regen-page"><p class="regen-eyebrow">TOP 100 REGEN</p><h1>Regen Archive</h1><p class="lede">Regen's permanent home is now inside the main Top 100 site. Historical launch material already published on Top 100 stays where it is; posts from the former standalone Regen site will be folded into this archive as they are migrated.</p>
-<h2>How Regen started</h2><div class="regen-link-list"><a href="/2025/05/27/fifty-managers-needed-for-top-100-regen/">Fifty Managers Needed For Top 100 Regen →</a><a href="/top-100-regen-s1-youth-cup/">Top 100 Regen S1 Youth Cup →</a><a href="/top-100-regen-s1-youth-cup-administrative-chaos-at-the-halfway-point/">Administrative Chaos at the Halfway Point →</a></div>
-<h2>Current Regen</h2><p>For current rules and joining information, use the Regen section pages. New Regen stories can live on the main Top 100 blog and be linked back here rather than requiring a separate Micro.blog site.</p><div class="regen-gateways"><a href="/regen/"><strong>Regen home</strong><span>Overview and current season</span></a><a href="/regen/rules/"><strong>Rules</strong><span>Current Regen differences</span></a><a href="/regen/join/"><strong>Join</strong><span>How to get a club</span></a><a href="/search/"><strong>Search Top 100</strong><span>Find Regen stories across the archive</span></a></div></main>
-<footer class="regen-footer"><div class="regen-wrap"><span>Top 100 Regen</span><span>Friendship · Fun · Fair play</span></div></footer></body></html>
+<main class="regen-page">
+  <p class="regen-eyebrow">TOP 100 REGEN</p>
+  <h1>Regen Archive</h1>
+  <p class="lede">All posts from the Regen game world, collected in one place. This archive is generated from the dedicated <strong>Regen</strong> category on the main Top 100 blog.</p>
+
+  <div id="regen-archive-status" class="regen-archive-status">Loading Regen posts…</div>
+  <div id="regen-archive-list" class="regen-archive-list" hidden></div>
+  <noscript><p class="regen-archive-status">JavaScript is disabled. <a href="/categories/regen/">Browse the Regen category instead.</a></p></noscript>
+
+  <div class="regen-gateways">
+    <a href="/regen/"><strong>Regen home</strong><span>Overview and current season</span></a>
+    <a href="/regen/rules/"><strong>Rules</strong><span>Current Regen differences</span></a>
+    <a href="/regen/join/"><strong>Join</strong><span>How to get a club</span></a>
+    <a href="/categories/regen/"><strong>Regen category</strong><span>Native Micro.blog category view</span></a>
+  </div>
+</main>
+<footer class="regen-footer"><div class="regen-wrap"><span>Top 100 Regen</span><span>Friendship · Fun · Fair play</span></div></footer>
+<script>
+(function(){
+  const status=document.getElementById('regen-archive-status');
+  const list=document.getElementById('regen-archive-list');
+  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const text=item=>item.summary||item.content_text||'';
+  fetch('/categories/regen/feed.json',{headers:{'Accept':'application/feed+json, application/json'}})
+    .then(r=>{if(!r.ok)throw new Error('Feed unavailable');return r.json();})
+    .then(feed=>{
+      const items=(feed.items||[]).slice().sort((a,b)=>new Date(b.date_published||0)-new Date(a.date_published||0));
+      if(!items.length)throw new Error('No Regen posts found');
+      list.innerHTML=items.map(item=>{
+        const date=item.date_published?new Date(item.date_published).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';
+        let summary=text(item).replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+        if(summary.length>220)summary=summary.slice(0,217).trimEnd()+'…';
+        return '<article class="regen-archive-item"><h2><a href="'+esc(item.url||item.external_url||'#')+'">'+esc(item.title||'Untitled post')+'</a></h2><p class="regen-archive-meta">'+esc(date)+'</p>'+(summary?'<p class="regen-archive-summary">'+esc(summary)+'</p>':'')+'</article>';
+      }).join('');
+      status.hidden=true;
+      list.hidden=false;
+    })
+    .catch(()=>{
+      status.innerHTML='The Regen archive feed could not be loaded. <a href="/categories/regen/">Browse the Regen category directly.</a>';
+    });
+})();
+</script>
+</body>
+</html>
