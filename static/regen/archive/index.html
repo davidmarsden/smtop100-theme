@@ -35,17 +35,35 @@
   const status=document.getElementById('regen-archive-status');
   const list=document.getElementById('regen-archive-list');
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const text=item=>item.summary||item.content_text||'';
-  fetch('/categories/regen/feed.json',{headers:{'Accept':'application/feed+json, application/json'}})
-    .then(r=>{if(!r.ok)throw new Error('Feed unavailable');return r.json();})
-    .then(feed=>{
-      const items=(feed.items||[]).slice().sort((a,b)=>new Date(b.date_published||0)-new Date(a.date_published||0));
+  const strip=s=>String(s||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+  const firstText=(node,names)=>{
+    for(const name of names){
+      const el=node.getElementsByTagName(name)[0];
+      if(el&&el.textContent)return el.textContent;
+    }
+    return '';
+  };
+  fetch('/categories/regen/feed.xml')
+    .then(r=>{if(!r.ok)throw new Error('Feed unavailable');return r.text();})
+    .then(xmlText=>{
+      const xml=new DOMParser().parseFromString(xmlText,'application/xml');
+      if(xml.querySelector('parsererror'))throw new Error('Invalid feed XML');
+      const items=Array.from(xml.getElementsByTagName('item')).map(item=>{
+        const pubDate=firstText(item,['pubDate','dc:date']);
+        const description=firstText(item,['content:encoded','description']);
+        return {
+          title:firstText(item,['title'])||'Untitled post',
+          url:firstText(item,['link']),
+          date:pubDate,
+          summary:strip(description)
+        };
+      }).sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
       if(!items.length)throw new Error('No Regen posts found');
       list.innerHTML=items.map(item=>{
-        const date=item.date_published?new Date(item.date_published).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';
-        let summary=text(item).replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+        const date=item.date?new Date(item.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';
+        let summary=item.summary;
         if(summary.length>220)summary=summary.slice(0,217).trimEnd()+'…';
-        return '<article class="regen-archive-item"><h2><a href="'+esc(item.url||item.external_url||'#')+'">'+esc(item.title||'Untitled post')+'</a></h2><p class="regen-archive-meta">'+esc(date)+'</p>'+(summary?'<p class="regen-archive-summary">'+esc(summary)+'</p>':'')+'</article>';
+        return '<article class="regen-archive-item"><h2><a href="'+esc(item.url||'#')+'">'+esc(item.title)+'</a></h2><p class="regen-archive-meta">'+esc(date)+'</p>'+(summary?'<p class="regen-archive-summary">'+esc(summary)+'</p>':'')+'</article>';
       }).join('');
       status.hidden=true;
       list.hidden=false;
