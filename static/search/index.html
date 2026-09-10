@@ -9,29 +9,83 @@
   <link rel="stylesheet" href="/css/top100-refinements.css">
   <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
   <style>
-    body { margin: 0; background: #f5f7fa; color: #0b1f3b; font-family: system-ui, sans-serif; }
-    .search-shell { max-width: 900px; margin: 0 auto; padding: 48px 22px 72px; }
-    .search-card { background: #fff; border: 1px solid rgba(11,31,59,.12); border-radius: 22px; padding: clamp(24px,4vw,42px); box-shadow: 0 12px 34px rgba(11,31,59,.06); }
-    h1 { margin: 0 0 10px; font-size: clamp(34px,6vw,54px); letter-spacing: -.04em; }
-    .lede { margin: 0 0 28px; color: #607086; font-size: 17px; }
-    .back { display: inline-block; margin-top: 28px; font-weight: 800; color: #08755c; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #071526; color: #e6edf5; }
-      .search-card { background: #0d223a; border-color: rgba(203,213,225,.14); box-shadow: none; }
-      .lede { color: #c7d2e0; }
-      .back { color: #5ee6bd; }
-    }
+    body { margin: 0; background: #071526; color: #e6edf5; font-family: system-ui, sans-serif; }
+    .search-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .search-header { background: linear-gradient(90deg,#0b1f3b,#0b2740); border-bottom: 1px solid rgba(203,213,225,.14); }
+    .search-header-inner, .search-footer-inner { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .search-brand-row { display:flex; align-items:end; justify-content:space-between; gap:24px; padding:24px 0 18px; }
+    .search-brand { display:grid; gap:8px; }
+    .search-wordmark { font-size: clamp(2.3rem,5vw,4rem); font-weight:950; letter-spacing:-.07em; line-height:.9; }
+    .search-wordmark .top { color:#fff; }.search-wordmark .hundred { color:#10b981; }
+    .search-pitch { display:flex; align-items:center; width:min(300px,100%); }
+    .search-pitch:before,.search-pitch:after{content:"";height:1px;background:#cbd5e1;flex:1}.search-pitch i{display:block;width:16px;height:16px;border:2px solid #cbd5e1;border-radius:50%}
+    .search-tagline { margin:0; color:#cbd5e1; font-size:.68rem; font-weight:900; letter-spacing:.22em; text-transform:uppercase; }
+    .search-product { text-align:right; }
+    .search-product .eyebrow { margin:0 0 2px; color:#34d399; font-size:.78rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    .search-product strong { font-size:1.35rem; }
+    .ecosystem-nav { display:flex; gap:10px; flex-wrap:wrap; padding:0 0 20px; }
+    .ecosystem-nav a { display:inline-flex; align-items:center; padding:10px 16px; border:1px solid #68809a; border-radius:999px; color:#eef4f8; text-decoration:none; font-weight:800; }
+    .ecosystem-nav a.active { background:#10b981; border-color:#10b981; color:#071526; }
+    .search-shell { width:min(980px,calc(100% - 40px)); margin:0 auto; padding:46px 0 72px; flex:1; }
+    .search-card { background:#0d223a; border:1px solid rgba(203,213,225,.14); border-radius:24px; padding:clamp(26px,4vw,44px); box-shadow:0 18px 50px rgba(0,0,0,.18); }
+    h1 { margin:0 0 10px; font-size:clamp(38px,6vw,58px); letter-spacing:-.045em; }
+    .lede { margin:0 0 28px; color:#c7d2e0; font-size:18px; }
+    .search-footer { border-top:1px solid rgba(203,213,225,.14); background:#061323; }
+    .search-footer-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding:24px 0 30px; }
+    .footer-brand { font-weight:900; font-size:1.2rem; }.footer-brand span{color:#10b981}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a{color:#cbd5e1;text-decoration:none;font-weight:700}.footer-links a:hover{text-decoration:underline}
+    .pagefind-ui__search-input { border-radius:12px !important; }
+    @media(max-width:720px){.search-brand-row{align-items:start;flex-direction:column}.search-product{text-align:left}.ecosystem-nav{gap:8px}.ecosystem-nav a{padding:9px 13px}.search-footer-inner{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
 <body>
-  <main class="search-shell">
-    <section class="search-card">
-      <h1>Search Top 100</h1>
-      <p class="lede">Search more than a decade of Top 100 posts.</p>
-      <div id="search"></div>
-      <a class="back" href="/">← Back to Top 100</a>
-    </section>
-  </main>
+  <div class="search-page">
+    <header class="search-header">
+      <div class="search-header-inner">
+        <div class="search-brand-row">
+          <div class="search-brand" aria-label="Top 100">
+            <div class="search-wordmark"><span class="top">Top</span><span class="hundred">100</span></div>
+            <span class="search-pitch" aria-hidden="true"><i></i></span>
+            <p class="search-tagline">Managers. Stories. A bigger game.</p>
+          </div>
+          <div class="search-product"><p class="eyebrow">TOP 100</p><strong>Search</strong></div>
+        </div>
+        <nav class="ecosystem-nav" aria-label="Top 100 ecosystem">
+          <a href="https://smtop100.blog/">Top 100</a>
+          <a href="https://archive.smtop100.blog/">Stats &amp; History</a>
+          <a href="https://tournaments.smtop100.blog/">Tournaments</a>
+          <a href="https://vote.smtop100.blog/">Voting Results</a>
+          <a href="https://vote.smtop100.blog/vote">Vote</a>
+          <a href="https://awards.smtop100.blog/">Awards</a>
+          <a href="https://manager.smtop100.blog/">Manager</a>
+          <a href="https://smtop100.blog/regen/">Regen</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="search-shell">
+      <section class="search-card">
+        <h1>Search Top 100</h1>
+        <p class="lede">Search more than a decade of Top 100 posts.</p>
+        <div id="search"></div>
+      </section>
+    </main>
+
+    <footer class="search-footer">
+      <div class="search-footer-inner">
+        <div class="footer-brand">Top<span>100</span> · Search</div>
+        <nav class="footer-links" aria-label="Search footer">
+          <a href="https://smtop100.blog/about/">About</a>
+          <a href="https://smtop100.blog/rules/">Rules</a>
+          <a href="https://smtop100.blog/support/">Support</a>
+          <a href="https://smtop100.blog/contact/">Contact</a>
+          <a href="https://smtop100.blog/categories/">Categories</a>
+          <a href="https://smtop100.blog/subscribe/">Subscribe</a>
+          <a href="https://write.smtop100.blog/">Write</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
   <script src="/pagefind/pagefind-ui.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', function () {
