@@ -25,7 +25,7 @@
     .search-product strong { font-size:1.35rem; }
     .ecosystem-nav { display:flex; gap:10px; flex-wrap:wrap; padding:0 0 20px; }
     .ecosystem-nav a { display:inline-flex; align-items:center; padding:10px 16px; border:1px solid #68809a; border-radius:999px; color:#eef4f8; text-decoration:none; font-weight:800; }
-    .ecosystem-nav a.active { background:#10b981; border-color:#10b981; color:#071526; }
+    .ecosystem-nav a.active,.ecosystem-nav a.manager { background:#10b981; border-color:#10b981; color:#071526; }
     .search-shell { width:min(980px,calc(100% - 40px)); margin:0 auto; padding:46px 0 72px; flex:1; }
     .search-card { background:#0d223a; border:1px solid rgba(203,213,225,.14); border-radius:24px; padding:clamp(26px,4vw,44px); box-shadow:0 18px 50px rgba(0,0,0,.18); }
     h1 { margin:0 0 10px; font-size:clamp(38px,6vw,58px); letter-spacing:-.045em; }
@@ -33,13 +33,7 @@
     .search-footer { border-top:1px solid rgba(203,213,225,.14); background:#061323; }
     .search-footer-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding:24px 0 30px; }
     .footer-brand { font-weight:900; font-size:1.2rem; }.footer-brand span{color:#10b981}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a{color:#cbd5e1;text-decoration:none;font-weight:700}.footer-links a:hover{text-decoration:underline}
-    #search {
-      --pagefind-ui-primary: #5ee6bd;
-      --pagefind-ui-text: #e6edf5;
-      --pagefind-ui-background: #0d223a;
-      --pagefind-ui-border: #3b5875;
-      --pagefind-ui-tag: #102844;
-    }
+    #search { --pagefind-ui-primary:#5ee6bd; --pagefind-ui-text:#e6edf5; --pagefind-ui-background:#0d223a; --pagefind-ui-border:#3b5875; --pagefind-ui-tag:#102844; }
     .pagefind-ui__search-input { border-radius:12px !important; }
     @media(max-width:720px){.search-brand-row{align-items:start;flex-direction:column}.search-product{text-align:left}.ecosystem-nav{gap:8px}.ecosystem-nav a{padding:9px 13px}.search-footer-inner{align-items:flex-start;flex-direction:column}}
   </style>
@@ -56,15 +50,12 @@
           </div>
           <div class="search-product"><p class="eyebrow">TOP 100</p><strong>Search</strong></div>
         </div>
-        <nav class="ecosystem-nav" aria-label="Top 100 ecosystem">
+        <nav class="ecosystem-nav" aria-label="Top 100">
           <a href="https://smtop100.blog/">Top 100</a>
-          <a href="https://archive.smtop100.blog/">Stats &amp; History</a>
-          <a href="https://tournaments.smtop100.blog/">Tournaments</a>
-          <a href="https://vote.smtop100.blog/">Voting Results</a>
-          <a href="https://vote.smtop100.blog/vote">Vote</a>
-          <a href="https://awards.smtop100.blog/">Awards</a>
-          <a href="https://manager.smtop100.blog/">Manager</a>
-          <a href="https://smtop100.blog/regen/">Regen</a>
+          <a href="https://smtop100.blog/regen/">Top 100 Regen</a>
+          <a href="https://smtop100.blog/about/">About</a>
+          <a class="active" href="https://smtop100.blog/explore/">Explore</a>
+          <a class="manager" href="https://manager.smtop100.blog/">Manager sign-in</a>
         </nav>
       </div>
     </header>
@@ -83,11 +74,10 @@
         <nav class="footer-links" aria-label="Search footer">
           <a href="https://smtop100.blog/about/">About</a>
           <a href="https://smtop100.blog/rules/">Rules</a>
+          <a href="https://smtop100.blog/contact/">Contact / Join</a>
+          <a href="https://smtop100.blog/explore/">Explore</a>
           <a href="https://smtop100.blog/support/">Support</a>
-          <a href="https://smtop100.blog/contact/">Contact</a>
-          <a href="https://smtop100.blog/categories/">Categories</a>
           <a href="https://smtop100.blog/subscribe/">Subscribe</a>
-          <a href="https://write.smtop100.blog/">Write</a>
         </nav>
       </div>
     </footer>
