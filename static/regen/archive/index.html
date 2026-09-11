@@ -12,19 +12,19 @@
   </style>
 </head>
 <body class="regen-section-page">
-<header class="regen-shell-header"><div class="regen-shell-header__inner"><a class="regen-top100-link" href="/">Top <strong>100</strong></a><nav aria-label="Top 100 Regen"><a href="/regen/">Regen</a><a href="/regen/rules/">Rules</a><a class="is-current" href="/regen/archive/">Archive</a><a href="/regen/join/">Join</a><a href="/subscribe/">Subscribe</a></nav></div></header>
+<header class="regen-shell-header"><div class="regen-shell-header__inner"><a class="regen-top100-link" href="/">Top <strong>100</strong></a><nav aria-label="Top 100 Regen"><a href="/regen/">Top 100 Regen</a><a href="/regen/rules/">Rules</a><a class="is-current" href="/regen/archive/">Archive</a><a href="/regen/join/">Join</a><a href="/subscribe/">Subscribe</a></nav></div></header>
 <main class="regen-page">
   <p class="regen-eyebrow">TOP 100 REGEN</p>
-  <h1>Regen Archive</h1>
-  <p class="lede">All posts from the Regen game world, collected in one place. This archive is generated from the dedicated <strong>Regen</strong> category on the main Top 100 blog.</p>
+  <h1>Top 100 Regen Archive</h1>
+  <p class="lede">All posts from the Top 100 Regen game world, collected in one place. This archive is generated from the dedicated <strong>Regen</strong> category on the main Top 100 blog.</p>
 
-  <div id="regen-archive-status" class="regen-archive-status">Loading Regen posts…</div>
+  <div id="regen-archive-status" class="regen-archive-status">Loading Top 100 Regen posts…</div>
   <div id="regen-archive-list" class="regen-archive-list" hidden></div>
   <noscript><p class="regen-archive-status">JavaScript is disabled. <a href="/categories/regen/">Browse the Regen category instead.</a></p></noscript>
 
   <div class="regen-gateways">
-    <a href="/regen/"><strong>Regen home</strong><span>Overview and current season</span></a>
-    <a href="/regen/rules/"><strong>Rules</strong><span>Current Regen differences</span></a>
+    <a href="/regen/"><strong>Top 100 Regen home</strong><span>Overview and current season</span></a>
+    <a href="/regen/rules/"><strong>Rules</strong><span>Current Top 100 Regen differences</span></a>
     <a href="/regen/join/"><strong>Join</strong><span>How to get a club</span></a>
     <a href="/categories/regen/"><strong>Regen category</strong><span>Native Micro.blog category view</span></a>
   </div>
@@ -51,12 +51,7 @@
       const items=Array.from(xml.getElementsByTagName('item')).map(item=>{
         const pubDate=firstText(item,['pubDate','dc:date']);
         const description=firstText(item,['content:encoded','description']);
-        return {
-          title:firstText(item,['title'])||'Untitled post',
-          url:firstText(item,['link']),
-          date:pubDate,
-          summary:strip(description)
-        };
+        return {title:firstText(item,['title'])||'Untitled post',url:firstText(item,['link']),date:pubDate,summary:strip(description)};
       }).sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
       if(!items.length)throw new Error('No Regen posts found');
       list.innerHTML=items.map(item=>{
@@ -68,9 +63,7 @@
       status.hidden=true;
       list.hidden=false;
     })
-    .catch(()=>{
-      status.innerHTML='The Regen archive feed could not be loaded. <a href="/categories/regen/">Browse the Regen category directly.</a>';
-    });
+    .catch(()=>{status.innerHTML='The Top 100 Regen archive feed could not be loaded. <a href="/categories/regen/">Browse the Regen category directly.</a>';});
 })();
 </script>
 </body>
