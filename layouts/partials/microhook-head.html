@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#0B1F3B">
 
 <meta property="og:site_name" content="Top 100">
-<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:type" content="{{ if eq .Type "post" }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}Top 100{{ else }}{{ printf "%s — Top 100" .Title }}{{ end }}">
 <meta property="og:description" content="{{ if .IsHome }}A long-running 100-club Soccer Manager world with five divisions, competitions, records and manager-written history.{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
