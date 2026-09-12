@@ -14,8 +14,8 @@
 <meta name="twitter:description" content="{{ if .IsHome }}A long-running 100-club Soccer Manager world with five divisions, competitions, records and manager-written history.{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}">
 {{ with .Params.images }}
   {{ range first 1 . }}
-<meta property="og:image" content="{{ . }}">
-<meta name="twitter:image" content="{{ . }}">
+<meta property="og:image" content="{{ . | absURL }}">
+<meta name="twitter:image" content="{{ . | absURL }}">
   {{ end }}
 {{ end }}
 
