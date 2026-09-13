@@ -1,0 +1,60 @@
+name: Generate Regen social card
+
+on:
+  push:
+    branches:
+      - fix/regen-social-card
+    paths:
+      - scripts/generate-regen-social-card.mjs
+      - .github/workflows/generate-regen-social-card.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/regen-social-card
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate PNG
+        run: node scripts/generate-regen-social-card.mjs
+      - name: Verify PNG structure
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const b = fs.readFileSync('static/top100-social-regen.png');
+          const sig = Buffer.from([137,80,78,71,13,10,26,10]);
+          if (!b.subarray(0,8).equals(sig)) throw new Error('Bad PNG signature');
+          const width = b.readUInt32BE(16);
+          const height = b.readUInt32BE(20);
+          if (width !== 1200 || height !== 630) throw new Error(`Unexpected dimensions ${width}x${height}`);
+          let offset = 8;
+          let sawIEND = false;
+          while (offset + 12 <= b.length) {
+            const len = b.readUInt32BE(offset);
+            const type = b.toString('ascii', offset + 4, offset + 8);
+            const end = offset + 12 + len;
+            if (end > b.length) throw new Error(`${type} chunk exceeds file length`);
+            if (type === 'IEND') { sawIEND = true; break; }
+            offset = end;
+          }
+          if (!sawIEND) throw new Error('Missing IEND');
+          console.log(`Verified ${width}x${height}, ${b.length} bytes`);
+          NODE
+      - name: Commit generated card
+        run: |
+          git add static/top100-social-regen.png
+          if git diff --cached --quiet -- static/top100-social-regen.png; then
+            echo 'Regen social card already up to date.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Generate valid Regen social card'
+          git push origin HEAD:fix/regen-social-card
