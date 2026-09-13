@@ -1,16 +1,21 @@
-/* Micro.blog's own Page/home menu can still render as .site-nav on those routes.
-   Keep those fallback pills legible against the Top 100 navy header without
-   changing the custom Top 100 global navigation. */
-.site-header .site-nav a,
-.site-header .site-nav .page-link {
+/* Keep the actual Top 100 navigation legible when Micro.blog page/home styles
+   win later in the cascade. The rendered header uses .top100-global-nav. */
+.site-header .top100-global-nav a {
   color: var(--top100-white) !important;
   border-color: rgba(248, 250, 252, .58) !important;
   background: rgba(255, 255, 255, .035) !important;
 }
 
-.site-header .site-nav a:hover,
-.site-header .site-nav a:focus-visible {
+.site-header .top100-global-nav a:hover,
+.site-header .top100-global-nav a:focus-visible {
   color: var(--top100-white) !important;
   border-color: rgba(16, 185, 129, .82) !important;
   background: rgba(16, 185, 129, .16) !important;
+}
+
+.site-header .top100-global-nav .is-home,
+.site-header .top100-global-nav .top100-write-link {
+  color: #052b22 !important;
+  border-color: var(--top100-emerald) !important;
+  background: var(--top100-emerald) !important;
 }
