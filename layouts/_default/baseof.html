@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.defaultContentLanguage | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary">
+  {{ with .Title }}
+  <meta name="twitter:title" content="{{ . }}">
+  <meta property="og:title" content="{{ . }}">
+  {{ else }}
+  <meta name="twitter:title" content="{{ .Site.Title }}">
+  <meta property="og:title" content="{{ .Site.Title }}">
+  {{ end }}
+  {{ if .IsHome }}
+  <meta name="twitter:description" content="{{ .Site.Params.itunes_description | truncate 125 }}">
+  <meta name="og:description" content="{{ .Site.Params.itunes_description | truncate 60 }}">
+  <meta name="description" content="{{ .Site.Params.itunes_description }}">
+  <meta name="twitter:image" content="https://smtop100.blog/top100-social-main.png">
+  <meta property="og:image" content="https://smtop100.blog/top100-social-main.png">
+  {{ else }}
+  <meta name="twitter:description" content="{{ .Summary | truncate 60 }}">
+  <meta name="og:description" content="{{ .Summary | truncate 60 }}">
+  <meta name="description" content="{{ .Summary }}">
+  {{ end }}
+
+ {{ if .Params.photos }}
+   {{ with index .Params.photos 0 }}
+     <meta property="og:image" content="{{ . }}">
+   {{ end }}
+ {{ else }}
+   {{ with .Params.opengraph }}
+     <meta property="og:image" content="{{ .image }}">
+   {{ end }}
+ {{ end }}
+
+  <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ delimit (split .Summary " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}{{ end }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  <link rel="stylesheet" href="{{ "css/all.min.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  {{ partial "microblog_head.html" . }}
+  {{ if templates.Exists "partials/microhook-head.html" }}
+  {{ partial "microhook-head.html" . }}
+  {{ end }}
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-title">
+    <a href="/">{{ if templates.Exists "partials/microhook-profile-photo.html" }}{{ partial "microhook-profile-photo.html" . }}{{ else }}<img src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="profile_photo u-photo" width="80" height="80">{{ end }}</a>
+    <h1><a class="site-title p-name u-url" href="/">{{ .Site.Title }}</a></h1>
+    </div>
+
+    <nav class="site-nav">
+      <ul>
+        {{ range .Site.Menus.main }}
+        {{ if .Page.Params.redirect_url }}
+        <li><a class="page-link {{ .Name }}" href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
+        {{ else }}
+        <li><a class="page-link {{ .Name }}" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+  </header>
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      {{ block "main" . }}{{ end }}
+    </div>
+    {{ if templates.Exists "partials/microhook-after-content.html" }}{{ partial "microhook-after-content.html" . }}{{ end }}
+  </div>
+  <footer class="site-footer">
+
+    <div class="wrapper">
+      <p class="custom_footer">{{ partial "custom_footer.html" . }}</p>
+      <p class="attribution custom_footer">{{ T "Powered by" }} <a href="https://bayou.micro.blog">Bayou Theme</a> + <a href="https://micro.blog">Micro.blog</a>.<br>{{ T "Designed by" }} <a href="https://mattlangford.com">Matt Langford</a>.</p>
+    </div>
+
+  </footer>
+  {{ range .Site.Params.plugins_js }}
+  <script src="{{ . }}"></script>
+  {{ end }}
+</body>
+</html>
