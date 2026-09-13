@@ -44,42 +44,14 @@
   {{ end }}
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-title">
-    <a href="/">{{ if templates.Exists "partials/microhook-profile-photo.html" }}{{ partial "microhook-profile-photo.html" . }}{{ else }}<img src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="profile_photo u-photo" width="80" height="80">{{ end }}</a>
-    <h1><a class="site-title p-name u-url" href="/">{{ .Site.Title }}</a></h1>
-    </div>
-
-    {{ if templates.Exists "partials/microhook-navigation.html" }}
-    {{ partial "microhook-navigation.html" . }}
-    {{ else }}
-    <nav class="site-nav">
-      <ul>
-        {{ range .Site.Menus.main }}
-        {{ if .Page.Params.redirect_url }}
-        <li><a class="page-link {{ .Name }}" href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
-        {{ else }}
-        <li><a class="page-link {{ .Name }}" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
-        {{ end }}
-        {{ end }}
-      </ul>
-    </nav>
-    {{ end }}
-  </header>
+  {{ partial "top100-base-header.html" . }}
   <div class="page-content-wrapper">
     <div class="page-content">
       {{ block "main" . }}{{ end }}
     </div>
     {{ if templates.Exists "partials/microhook-after-content.html" }}{{ partial "microhook-after-content.html" . }}{{ end }}
   </div>
-  <footer class="site-footer">
-
-    <div class="wrapper">
-      <p class="custom_footer">{{ partial "custom_footer.html" . }}</p>
-      <p class="attribution custom_footer">{{ T "Powered by" }} <a href="https://bayou.micro.blog">Bayou Theme</a> + <a href="https://micro.blog">Micro.blog</a>.<br>{{ T "Designed by" }} <a href="https://mattlangford.com">Matt Langford</a>.</p>
-    </div>
-
-  </footer>
+  {{ partial "footer.html" . }}
   {{ range .Site.Params.plugins_js }}
   <script src="{{ . }}"></script>
   {{ end }}
