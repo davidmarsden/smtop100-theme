@@ -49,12 +49,12 @@ jobs:
           NODE
       - name: Commit generated card
         run: |
-          if git diff --quiet -- static/top100-social-regen.png; then
+          git add static/top100-social-regen.png
+          if git diff --cached --quiet -- static/top100-social-regen.png; then
             echo 'Regen social card already up to date.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add static/top100-social-regen.png
           git commit -m 'Generate valid Regen social card'
           git push origin HEAD:fix/regen-social-card
