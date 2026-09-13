@@ -1,21 +1,11 @@
-/* Keep the actual Top 100 navigation legible when Micro.blog page/home styles
-   win later in the cascade. The rendered header uses .top100-global-nav. */
-.site-header .top100-global-nav a {
-  color: var(--top100-white) !important;
-  border-color: rgba(248, 250, 252, .58) !important;
-  background: rgba(255, 255, 255, .035) !important;
-}
-
-.site-header .top100-global-nav a:hover,
-.site-header .top100-global-nav a:focus-visible {
-  color: var(--top100-white) !important;
-  border-color: rgba(16, 185, 129, .82) !important;
-  background: rgba(16, 185, 129, .16) !important;
-}
-
-.site-header .top100-global-nav .is-home,
-.site-header .top100-global-nav .top100-write-link {
-  color: #052b22 !important;
-  border-color: var(--top100-emerald) !important;
-  background: var(--top100-emerald) !important;
+/* Sumo's shared header styles use CSS custom properties for navigation colours.
+   Override the variables at the theme level so Sumo cannot repaint the Top 100
+   navigation dark grey on the navy header across home, Pages or posts. */
+:root {
+  --navigation-button-border: rgba(248, 250, 252, .58);
+  --navigation-button-background: rgba(255, 255, 255, .035);
+  --navigation-button-border-hover: rgba(16, 185, 129, .82);
+  --navigation-button-background-hover: rgba(16, 185, 129, .16);
+  --navigation-text: #F8FAFC;
+  --navigation-text-hover: #F8FAFC;
 }
