@@ -1,0 +1,19 @@
+{{- if .IsPage -}}
+  {{- $shareTitle := .Title | default "Top 100" -}}
+  <aside class="top100-discuss-wrap" aria-label="Discuss this page">
+    <div class="top100-discuss-card">
+      <div>
+        <p class="top100-discuss-kicker">Keep the conversation going</p>
+        <strong>Discuss this in the Top 100 clubhouse.</strong>
+        <span>Private to approved Top 100 managers.</span>
+      </div>
+      <a
+        class="top100-discuss-button"
+        href="https://manager.smtop100.blog/chat?shareTitle={{ $shareTitle | urlquery }}&amp;shareUrl={{ .Permalink | urlquery }}"
+      >
+        <span aria-hidden="true">💬</span>
+        Discuss in Top 100 Chat
+      </a>
+    </div>
+  </aside>
+{{- end -}}
