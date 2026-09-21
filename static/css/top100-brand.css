@@ -470,3 +470,74 @@ time { color: var(--top100-muted); }
   .top100-latest-heading { border-color: rgba(203,213,225,.14); }
   .page-content code { background: #122A44; color: #DCE5EF; }
 }
+
+
+/* Private Top 100 Chat discussion hand-off for individual posts and pages. */
+.top100-discuss-wrap {
+  max-width: 1120px;
+  margin: 8px auto 44px;
+  padding: 0 clamp(20px, 5vw, 54px);
+}
+.top100-discuss-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 20px 22px;
+  border: 1px solid rgba(16,185,129,.22);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 92% 20%, rgba(16,185,129,.12), transparent 28%),
+    #0B1F3B;
+  color: #F8FAFC;
+  box-shadow: 0 14px 34px rgba(11,31,59,.10);
+}
+.top100-discuss-card strong {
+  display: block;
+  margin: 1px 0 4px;
+  color: #F8FAFC;
+  font-size: 18px;
+  line-height: 1.25;
+}
+.top100-discuss-card span {
+  color: #CBD5E1;
+  font-size: 13px;
+}
+.top100-discuss-kicker {
+  margin: 0 0 3px;
+  color: #10B981;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.top100-discuss-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #10B981;
+  color: #052b22 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: 850;
+  transition: transform .18s ease, background .18s ease;
+}
+.top100-discuss-button:hover {
+  transform: translateY(-1px);
+  background: #34D399;
+  color: #052b22 !important;
+}
+.top100-discuss-button span {
+  color: inherit;
+  font-size: 15px;
+}
+
+@media (max-width: 680px) {
+  .top100-discuss-wrap { padding: 0 16px; margin-bottom: 32px; }
+  .top100-discuss-card { align-items: stretch; flex-direction: column; }
+  .top100-discuss-button { justify-content: center; width: 100%; }
+}
