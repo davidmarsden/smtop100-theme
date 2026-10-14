@@ -16,23 +16,11 @@
   <meta name="twitter:description" content="{{ .Site.Params.itunes_description | truncate 125 }}">
   <meta name="og:description" content="{{ .Site.Params.itunes_description | truncate 60 }}">
   <meta name="description" content="{{ .Site.Params.itunes_description }}">
-  <meta name="twitter:image" content="https://smtop100.blog/top100-social-main.png">
-  <meta property="og:image" content="https://smtop100.blog/top100-social-main.png">
   {{ else }}
   <meta name="twitter:description" content="{{ .Summary | truncate 60 }}">
   <meta name="og:description" content="{{ .Summary | truncate 60 }}">
   <meta name="description" content="{{ .Summary }}">
   {{ end }}
-
- {{ if .Params.photos }}
-   {{ with index .Params.photos 0 }}
-     <meta property="og:image" content="{{ . }}">
-   {{ end }}
- {{ else }}
-   {{ with .Params.opengraph }}
-     <meta property="og:image" content="{{ .image }}">
-   {{ end }}
- {{ end }}
 
   <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ delimit (split .Summary " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}{{ end }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
