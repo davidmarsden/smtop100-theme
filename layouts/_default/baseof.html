@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
   <link rel="stylesheet" href="{{ "css/all.min.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
   {{ partial "microblog_head.html" . }}
+  {{ partialCached "socialspec-generate.html" . }}
   {{ if templates.Exists "partials/microhook-head.html" }}
   {{ partial "microhook-head.html" . }}
   {{ end }}
