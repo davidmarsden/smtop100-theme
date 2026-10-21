@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Top 100 is following</title>
+    <ownerName>Top 100</ownerName>
+    <ownerId>https://smtop100.blog/</ownerId>
+  </head>
+  <body>
+    <outline type="rss" text="David Marsden" title="David Marsden" xmlUrl="https://davidmarsden.info/feed.xml" htmlUrl="https://davidmarsden.info/"/>
+    <outline type="rss" text="Invincibles Games (Soccer Manager) on YouTube" title="Invincibles Games (Soccer Manager) on YouTube" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCeFFbS4jp0p0na6r-afGWlQ" htmlUrl="https://www.youtube.com/@InvinciblesGames"/>
+  </body>
+</opml>
