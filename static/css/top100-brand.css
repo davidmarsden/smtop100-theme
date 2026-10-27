@@ -541,3 +541,91 @@ time { color: var(--top100-muted); }
   .top100-discuss-card { align-items: stretch; flex-direction: column; }
   .top100-discuss-button { justify-content: center; width: 100%; }
 }
+
+/* Key rules summary: homepage card and compact footer strip on every other page. */
+.top100-key-rules {
+  margin: 0 0 44px;
+  padding: 24px 26px;
+  border: 1px solid rgba(16,185,129,.28);
+  border-left: 5px solid #10B981;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 94% 12%, rgba(16,185,129,.12), transparent 30%),
+    #0B1F3B;
+  color: #F8FAFC;
+}
+.top100-key-rules-kicker {
+  margin: 0 0 4px;
+  color: #10B981;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.top100-key-rules h2,
+.page-content .top100-key-rules h2 {
+  margin: 0 0 14px;
+  color: #F8FAFC;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.top100-key-rules-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  counter-reset: top100-key-rule;
+}
+.top100-key-rules-list li {
+  counter-increment: top100-key-rule;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(248,250,252,.06);
+  line-height: 1.4;
+}
+.top100-key-rules-list li::before {
+  content: counter(top100-key-rule);
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  color: #052b22;
+  font-size: 13px;
+  font-weight: 850;
+}
+.top100-key-rules-list strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #F8FAFC;
+  font-size: 16px;
+}
+.top100-key-rules-list span { color: #CBD5E1; font-size: 14px; }
+.top100-key-rules-link,
+.top100-key-rules-link:hover {
+  color: #34D399 !important;
+  font-weight: 850;
+  text-decoration: none;
+}
+.top100-key-rules-link:hover { text-decoration: underline; }
+
+.top100-key-rules--compact {
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  border-radius: 14px;
+}
+.top100-key-rules--compact h2 { font-size: 17px; margin-bottom: 10px; }
+.top100-key-rules--compact .top100-key-rules-list { gap: 8px; margin-bottom: 10px; }
+.top100-key-rules--compact .top100-key-rules-list li { padding: 10px 12px; }
+.top100-key-rules--compact .top100-key-rules-list li::before { width: 20px; height: 20px; font-size: 11px; margin-bottom: 4px; }
+.top100-key-rules--compact .top100-key-rules-list strong { font-size: 14px; }
+.top100-key-rules--compact .top100-key-rules-list span { font-size: 13px; }
+
+@media (max-width: 720px) {
+  .top100-key-rules-list { grid-template-columns: 1fr; }
+  .top100-key-rules { padding: 20px 18px; }
+}

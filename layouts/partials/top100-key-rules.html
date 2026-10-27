@@ -1,0 +1,15 @@
+{{- /* Key game-world rules every manager must know before joining or bidding.
+       Keep in step with the canonical rulebook at /rules/ (smtop100-blog: migration/pages/rules.md). */ -}}
+{{- $compact := eq .variant "compact" -}}
+<aside class="top100-key-rules{{ if $compact }} top100-key-rules--compact{{ end }}" aria-labelledby="top100-key-rules-{{ .variant }}">
+  <div class="top100-key-rules-head">
+    <p class="top100-key-rules-kicker">New to Top 100? Read before you bid</p>
+    <h2 id="top100-key-rules-{{ .variant }}">Three rules every manager must know</h2>
+  </div>
+  <ol class="top100-key-rules-list">
+    <li><strong>50-player squad limit.</strong> <span>Loans count both ways: players loaned in <em>and</em> out.</span></li>
+    <li><strong>Agreed deals are binding.</strong> <span>Once both managers clearly agree a transfer, neither side can back out.</span></li>
+    <li><strong>New database players: public bids only.</strong> <span>Maximum £1,000,000 cash, no hidden bids or side deals.</span></li>
+  </ol>
+  <a class="top100-key-rules-link" href="/rules/">Read the full rules →</a>
+</aside>
