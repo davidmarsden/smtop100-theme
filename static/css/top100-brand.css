@@ -545,6 +545,7 @@ time { color: var(--top100-muted); }
 /* Key rules summary: homepage card and compact footer strip on every other page. */
 .top100-key-rules {
   margin: 0 0 44px;
+  text-align: center;
   padding: 24px 26px;
   border: 1px solid rgba(16,185,129,.28);
   border-left: 5px solid #10B981;
@@ -584,6 +585,7 @@ time { color: var(--top100-muted); }
   border-radius: 12px;
   background: rgba(248,250,252,.06);
   line-height: 1.4;
+  text-align: center;
 }
 .top100-key-rules-list li::before {
   content: counter(top100-key-rule);
