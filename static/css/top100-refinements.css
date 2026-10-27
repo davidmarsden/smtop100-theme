@@ -332,6 +332,12 @@
   margin-right: 0 !important;
   background: #071526 !important;
 }
+/* Something later in the cascade still painted the footer slate; the id
+   outranks any class-based rule, so the footer matches the navy header. */
+#top100-footer.site-footer {
+  background: var(--top100-navy) !important;
+  border-top-color: rgba(255,255,255,.08) !important;
+}
 .site-footer .wrapper {
   margin-left: auto;
   margin-right: auto;
@@ -345,4 +351,59 @@
 .top100-footer-links { justify-content: center; }
 @media (max-width: 620px) {
   .top100-footer-inner { justify-items: center; }
+}
+
+/* Key-rules summary in the top-right of the site header. */
+.site-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 32px;
+  align-items: start;
+}
+.site-header > .top100-brand-lockup,
+.site-header > .top100-global-nav { grid-column: 1; }
+.site-header > .top100-brand-lockup { justify-self: start; }
+.top100-header-rules {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  max-width: 300px;
+  padding: 14px 16px;
+  border: 1px solid rgba(16,185,129,.35);
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  color: #CBD5E1;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.top100-header-rules-title {
+  margin: 0 0 6px;
+  color: var(--top100-emerald);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.top100-header-rules ul {
+  margin: 0 0 8px;
+  padding-left: 16px;
+}
+.top100-header-rules li { margin: 0 0 3px; }
+.top100-header-rules strong { color: var(--top100-white); }
+.top100-header-rules a {
+  color: #34D399 !important;
+  font-weight: 800;
+  text-decoration: none;
+}
+.top100-header-rules a:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .site-header { display: block; }
+  .top100-header-rules {
+    max-width: none;
+    margin: 14px 0 4px;
+  }
+}
+@media (max-width: 620px) {
+  .top100-header-rules { margin: 12px 18px 4px; }
 }
