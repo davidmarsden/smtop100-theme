@@ -320,3 +320,29 @@
     font-size: 12px;
   }
 }
+
+/* Full-bleed footer: Sumo constrains and colours the footer box, so the dark
+   band stopped short of the page edges. Paint the whole footer and keep only
+   the content centred at the shell width. */
+.site-footer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  background: #071526 !important;
+}
+.site-footer .wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent !important;
+}
+.top100-footer-inner {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.top100-footer-links { justify-content: center; }
+@media (max-width: 620px) {
+  .top100-footer-inner { justify-items: center; }
+}
