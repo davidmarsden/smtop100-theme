@@ -65,24 +65,24 @@
   color: var(--top100-muted);
 }
 
-@media (prefers-color-scheme: dark) {
-  .top100-category-directory__header h1 { color: #F8FAFC; }
-  .top100-category-directory__header p,
-  .top100-category-count,
-  .top100-category-empty { color: #AAB6C3; }
+/* Dark theme (the default; this used to apply only on devices set to dark mode). */
+.top100-category-directory__header h1 { color: #F8FAFC; }
+.top100-category-directory__header p,
+.top100-category-count,
+.top100-category-empty { color: #AAB6C3; }
 
-  .top100-category-card {
-    background: #0D223A;
-    border-color: rgba(203,213,225,.14);
-    color: #F8FAFC;
-  }
-
-  .top100-category-card:hover,
-  .top100-category-card:focus-visible {
-    border-color: rgba(16,185,129,.55);
-    box-shadow: none;
-  }
+.top100-category-card {
+  background: #0D223A;
+  border-color: rgba(203,213,225,.14);
+  color: #F8FAFC;
 }
+
+.top100-category-card:hover,
+.top100-category-card:focus-visible {
+  border-color: rgba(16,185,129,.55);
+  box-shadow: none;
+}
+
 
 @media (max-width: 560px) {
   .top100-category-grid { grid-template-columns: 1fr; }

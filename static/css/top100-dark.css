@@ -1,0 +1,42 @@
+/* Top 100 is dark by default. The base theme's colours (css/main.css) only go dark on devices
+   set to dark mode, so its dark values are set here for everyone, on the Top 100 navy. */
+:root {
+  color-scheme: dark;
+  --page-background: #071526;
+  --main-text: #E6EDF5;
+  --main-link: #7DD3FC;
+  --main-link-hover: #10B981;
+  --main-link-border: #24406B;
+  --main-link-border-hover: #10B981;
+  --profile-border: #24406B;
+  --navigation-button-border: #2C4A78;
+  --navigation-button-border-hover: #F8FAFC;
+  --navigation-button-background-hover: #F8FAFC;
+  --navigation-text: #AAB6C3;
+  --navigation-text-hover: #0B1F3B;
+  --heading-color: #F8FAFC;
+  --button-border: #2C4A78;
+  --button-border-hover: #F8FAFC;
+  --button-background-hover: #F8FAFC;
+  --button-text: #AAB6C3;
+  --button-text-hover: #0B1F3B;
+  --hr: #24406B;
+  --blockquote-border: #10B981;
+  --blockquote-text: #C9D4E2;
+  --code-border: #2C4A78;
+  --code-background: #122A44;
+  --pre-border: #2C4A78;
+  --note: #473400;
+  --alert: #701A1C;
+  --aside: #17314D;
+  --callout: #1B3D46;
+  --comment-border: #2C4A78;
+  --footnotes: #AAB6C3;
+  --footnote-super: #F8FAFC;
+  --page-fold: #17314D;
+  --video-placeholder: #0D223A;
+  --comment-form-background-color: #0D223A;
+  --comment-form-border-color: #0D223A;
+  --shared-note: #473400;
+  --red-text: #FF6161;
+}

@@ -446,30 +446,30 @@ time { color: var(--top100-muted); }
   .top100-ecosystem-card { min-height: auto; }
 }
 
-@media (prefers-color-scheme: dark) {
-  body { background: #071526; color: #E5E7EB; }
-  .page-content .wrapper { color: #E5E7EB; }
-  .top100-ecosystem-card,
-  .top100-story-card { background: #0D223A; border-color: rgba(203,213,225,.12); }
-  .top100-ecosystem-card strong,
-  .top100-story-title a,
-  .post-preview .post-title,
-  .post-preview .post-title a,
-  article h1,
-  .page-content h1,
-  .page-content h2,
-  .page-content h3 { color: #F8FAFC; }
-  .top100-ecosystem-card > span:last-child,
-  .top100-story-summary,
-  .top100-story-byline,
-  .post-date,
-  .post-date-wrapper,
-  time { color: #AAB6C3; }
-  .top100-card-icon { background: rgba(16,185,129,.13); }
-  .article-break,
-  .top100-latest-heading { border-color: rgba(203,213,225,.14); }
-  .page-content code { background: #122A44; color: #DCE5EF; }
-}
+/* Dark theme (the default; this used to apply only on devices set to dark mode). */
+body { background: #071526; color: #E5E7EB; }
+.page-content .wrapper { color: #E5E7EB; }
+.top100-ecosystem-card,
+.top100-story-card { background: #0D223A; border-color: rgba(203,213,225,.12); }
+.top100-ecosystem-card strong,
+.top100-story-title a,
+.post-preview .post-title,
+.post-preview .post-title a,
+article h1,
+.page-content h1,
+.page-content h2,
+.page-content h3 { color: #F8FAFC; }
+.top100-ecosystem-card > span:last-child,
+.top100-story-summary,
+.top100-story-byline,
+.post-date,
+.post-date-wrapper,
+time { color: #AAB6C3; }
+.top100-card-icon { background: rgba(16,185,129,.13); }
+.article-break,
+.top100-latest-heading { border-color: rgba(203,213,225,.14); }
+.page-content code { background: #122A44; color: #DCE5EF; }
+
 
 
 /* Private Top 100 Chat discussion hand-off for individual posts and pages. */
