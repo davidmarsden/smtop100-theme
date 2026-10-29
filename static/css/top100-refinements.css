@@ -157,86 +157,86 @@
   font-size: 11px;
 }
 
-@media (prefers-color-scheme: dark) {
-  body,
-  .page-content .wrapper,
-  .page-content .page,
-  .page-content .page .post-content,
-  .page-content .page .post-content p,
-  .page-content .page .post-content li,
-  .page-content .page .post-content strong,
-  .page-content .page .post-content em {
-    color: #E6EDF5;
-  }
-
-  .page-content .page {
-    background: #0D223A;
-    border-color: rgba(203,213,225,.14);
-    box-shadow: none;
-  }
-  .page-content .page > .post-title {
-    color: #F8FAFC;
-    border-bottom-color: rgba(203,213,225,.16);
-  }
-  .page-content .page .post-content h1,
-  .page-content .page .post-content h2,
-  .page-content .page .post-content h3 { color: #F8FAFC; }
-
-  /* Blog posts and static pages share post-content, so make all editorial links
-     readable against the dark Sumo background instead of only links inside .page. */
-  .page-content .post-content a,
-  .page-content article a {
-    color: #7DD3FC;
-    text-decoration-color: rgba(125,211,252,.55);
-  }
-  .page-content .post-content a:hover,
-  .page-content article a:hover {
-    color: var(--top100-emerald);
-    text-decoration-color: var(--top100-emerald);
-  }
-  .page-content .page .post-content code {
-    color: #E2E8F0;
-    background: #17314D;
-  }
-
-  .page-content ul.post-tags,
-  .page-content ul.post-tags::before {
-    color: #AAB6C3;
-  }
-  .page-content ul.post-tags a {
-    color: #5EE6BD;
-    background: rgba(16,185,129,.15);
-  }
-  .page-content ul.post-tags a:hover {
-    color: #052b22;
-    background: var(--top100-emerald);
-  }
-
-  .top100-story-card {
-    background: #0D223A;
-    border-color: rgba(203,213,225,.14);
-  }
-  .top100-story-title a { color: #F8FAFC; }
-  .top100-story-byline,
-  .top100-story-summary,
-  .top100-story-meta .post-date { color: #C7D2E0; }
-  .top100-story-category {
-    color: #5EE6BD;
-    background: rgba(16,185,129,.15);
-  }
-  .top100-story-link { color: #34D399; }
-
-  .top100-ecosystem-card {
-    background: #0D223A;
-    border-color: rgba(203,213,225,.14);
-  }
-  .top100-ecosystem-card strong { color: #F8FAFC; }
-  .top100-ecosystem-card > span:last-child { color: #C7D2E0; }
-
-  .site-footer,
-  .site-footer .wrapper,
-  .top100-footer-links a { color: #C7D2E0; }
+/* Dark theme (the default; this used to apply only on devices set to dark mode). */
+body,
+.page-content .wrapper,
+.page-content .page,
+.page-content .page .post-content,
+.page-content .page .post-content p,
+.page-content .page .post-content li,
+.page-content .page .post-content strong,
+.page-content .page .post-content em {
+  color: #E6EDF5;
 }
+
+.page-content .page {
+  background: #0D223A;
+  border-color: rgba(203,213,225,.14);
+  box-shadow: none;
+}
+.page-content .page > .post-title {
+  color: #F8FAFC;
+  border-bottom-color: rgba(203,213,225,.16);
+}
+.page-content .page .post-content h1,
+.page-content .page .post-content h2,
+.page-content .page .post-content h3 { color: #F8FAFC; }
+
+/* Blog posts and static pages share post-content, so make all editorial links
+   readable against the dark Sumo background instead of only links inside .page. */
+.page-content .post-content a,
+.page-content article a {
+  color: #7DD3FC;
+  text-decoration-color: rgba(125,211,252,.55);
+}
+.page-content .post-content a:hover,
+.page-content article a:hover {
+  color: var(--top100-emerald);
+  text-decoration-color: var(--top100-emerald);
+}
+.page-content .page .post-content code {
+  color: #E2E8F0;
+  background: #17314D;
+}
+
+.page-content ul.post-tags,
+.page-content ul.post-tags::before {
+  color: #AAB6C3;
+}
+.page-content ul.post-tags a {
+  color: #5EE6BD;
+  background: rgba(16,185,129,.15);
+}
+.page-content ul.post-tags a:hover {
+  color: #052b22;
+  background: var(--top100-emerald);
+}
+
+.top100-story-card {
+  background: #0D223A;
+  border-color: rgba(203,213,225,.14);
+}
+.top100-story-title a { color: #F8FAFC; }
+.top100-story-byline,
+.top100-story-summary,
+.top100-story-meta .post-date { color: #C7D2E0; }
+.top100-story-category {
+  color: #5EE6BD;
+  background: rgba(16,185,129,.15);
+}
+.top100-story-link { color: #34D399; }
+
+.top100-ecosystem-card {
+  background: #0D223A;
+  border-color: rgba(203,213,225,.14);
+}
+.top100-ecosystem-card strong { color: #F8FAFC; }
+.top100-ecosystem-card > span:last-child { color: #C7D2E0; }
+
+.site-footer,
+.site-footer .wrapper,
+.top100-footer-links a { color: #C7D2E0; }
+
 
 @media (max-width: 620px) {
   .site-header {
