@@ -631,3 +631,84 @@ time { color: #AAB6C3; }
   .top100-key-rules-list { grid-template-columns: 1fr; }
   .top100-key-rules { padding: 20px 18px; }
 }
+
+/* Homepage: how to apply for a club. Same card style as the key rules box, amber accent. */
+.top100-vacancies {
+  margin: 0 0 44px;
+  padding: 24px 26px;
+  border: 1px solid rgba(245,158,11,.30);
+  border-left: 5px solid #F59E0B;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 94% 12%, rgba(245,158,11,.12), transparent 30%),
+    #0B1F3B;
+  color: #F8FAFC;
+}
+.top100-vacancies-head { text-align: center; margin-bottom: 16px; }
+.top100-vacancies-kicker {
+  margin: 0 0 4px;
+  color: #F59E0B;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.top100-vacancies h2,
+.page-content .top100-vacancies h2 {
+  margin: 0 0 8px;
+  color: #F8FAFC;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.top100-vacancies-intro { margin: 0 auto; max-width: 680px; color: #CBD5E1; font-size: 15px; }
+.top100-vacancies-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.top100-vacancies-path {
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: rgba(248,250,252,.06);
+  line-height: 1.45;
+}
+.top100-vacancies-label {
+  margin: 0 0 8px;
+  color: #FCD34D;
+  font-size: 16px;
+  font-weight: 800;
+}
+.top100-vacancies-path ol { margin: 0 0 12px; padding-left: 20px; color: #CBD5E1; font-size: 14px; }
+.top100-vacancies-path li { margin-bottom: 6px; }
+.top100-vacancies-path strong { color: #F8FAFC; }
+.top100-vacancies-path a, .top100-vacancies-path a:hover { color: #FCD34D; }
+.top100-vacancies-cta,
+.top100-vacancies-cta:hover {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #F59E0B;
+  color: #1F1300 !important;
+  font-weight: 850;
+  font-size: 14px;
+  text-decoration: none;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.top100-vacancies-cta:hover { background: #FBBF24; }
+.top100-vacancies-link,
+.top100-vacancies-link:hover {
+  display: block;
+  text-align: center;
+  color: #FCD34D !important;
+  font-weight: 850;
+  text-decoration: none;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.top100-vacancies-link:hover { text-decoration: underline; }
+@media (max-width: 720px) {
+  .top100-vacancies-paths { grid-template-columns: 1fr; }
+  .top100-vacancies { padding: 20px 18px; }
+}
